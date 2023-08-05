@@ -29,7 +29,9 @@ const LoginPage = ({ searchParams }: { searchParams?: { p?: string } }) => {
   useEffect(() => {
     getProviders().then((prov) => {
       console.log(prov);
-      setProviders(prov);
+      if (prov) {
+        setProviders(prov);
+      }
     }).catch(console.log);
   }, []);
 
@@ -127,7 +129,7 @@ const LoginPage = ({ searchParams }: { searchParams?: { p?: string } }) => {
                 Or connect with:
               </Typography>
 
-              {Object.values(providers).map((provider: any) => {
+              {Object.values(providers)?.map((provider: any) => {
                 if (provider.id === "credentials") return <div key="credencials"></div>;
                 return (
                   <Button
