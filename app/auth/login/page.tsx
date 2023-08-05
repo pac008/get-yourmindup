@@ -28,6 +28,7 @@ const LoginPage = ({ searchParams }: { searchParams?: { p?: string } }) => {
   const [providers, setProviders] = useState<any>({});
   useEffect(() => {
     getProviders().then((prov) => {
+      console.log(prov);
       setProviders(prov);
     });
   }, []);
