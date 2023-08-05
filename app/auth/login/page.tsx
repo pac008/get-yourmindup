@@ -30,7 +30,7 @@ const LoginPage = ({ searchParams }: { searchParams?: { p?: string } }) => {
     getProviders().then((prov) => {
       console.log(prov);
       setProviders(prov);
-    });
+    }).catch(console.log);
   }, []);
 
   const onLoginForm = async ({ email, password }: FormData) => {

@@ -21,6 +21,7 @@ export const authOptions: NextAuthOptions = {
     // }),
     Credentials({
       name: "Custom Login",
+
       credentials: {
         email: {
           label: "Email",
