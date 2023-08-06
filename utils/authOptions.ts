@@ -56,11 +56,9 @@ export const authOptions: NextAuthOptions = {
   },
   callbacks: {
     async signIn({ user, account, profile, email, credentials }) {
-      console.log({ user, account, profile, email, credentials });
       return true
     },
     async redirect(params) {
-      console.log({params});
       return params.url;
 
     },
@@ -80,7 +78,6 @@ export const authOptions: NextAuthOptions = {
       return token;
     },
     async session({ session, token, user }: any) {
-      console.log(session);
       session.accessToken = token.accessToken;
       session.user = token.user;
       return session;

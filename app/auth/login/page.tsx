@@ -41,7 +41,7 @@ const LoginPage = ({ searchParams }: { searchParams?: { p?: string } }) => {
       const resp = await signIn("credentials", { email, password, redirect: false });
       console.log(resp);
       if (resp?.error) {
-        
+
         setShowError(true);
       }
     } catch (error) {
@@ -69,7 +69,7 @@ const LoginPage = ({ searchParams }: { searchParams?: { p?: string } }) => {
           <Grid container>
             <Grid item xs={12}>
               <Typography variant="h1" component="h1">
-                Iniciar Sesión
+                Sign in
               </Typography>
 
               <Chip
@@ -113,7 +113,7 @@ const LoginPage = ({ searchParams }: { searchParams?: { p?: string } }) => {
 
             <Grid item xs={12} mt={2}>
               <Button size="large" fullWidth type="submit" disabled={showError}>
-                Log In
+                Sign in
               </Button>
             </Grid>
 
@@ -122,7 +122,7 @@ const LoginPage = ({ searchParams }: { searchParams?: { p?: string } }) => {
                 href={`/auth/register?p=${searchParams?.p?.toString() || "/"}`}
                 style={{ textDecoration: "underline" }}
               >
-                You do not have an account?
+                Don`t you have an account?
               </Link>
             </Grid>
 
