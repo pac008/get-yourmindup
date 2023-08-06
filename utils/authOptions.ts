@@ -54,7 +54,6 @@ export const authOptions: NextAuthOptions = {
     strategy: "jwt",
     updateAge: 86400, // 1 day
   },
-
   callbacks: {
     async jwt({ token, account, user }: any) {
       if (account) {
@@ -77,4 +76,5 @@ export const authOptions: NextAuthOptions = {
       return session;
     },
   },
+  
 };
