@@ -38,9 +38,12 @@ const LoginPage = ({ searchParams }: { searchParams?: { p?: string } }) => {
   const onLoginForm = async ({ email, password }: FormData) => {
     setShowError(false);
     try {
-      const resp = await signIn("credentials", { email, password });
+      const resp = await signIn("credentials", { email, password, redirect: false });
       console.log(resp);
-
+      if (resp?.error) {
+        
+        setShowError(true);
+      }
     } catch (error) {
       console.log(error);
     }
