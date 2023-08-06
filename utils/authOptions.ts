@@ -55,6 +55,15 @@ export const authOptions: NextAuthOptions = {
     updateAge: 86400, // 1 day
   },
   callbacks: {
+    async signIn({ user, account, profile, email, credentials }) {
+      console.log({ user, account, profile, email, credentials });
+      return true
+    },
+    async redirect(params) {
+      console.log({params});
+      return params.url;
+
+    },
     async jwt({ token, account, user }: any) {
       if (account) {
         token.accessToken = account.access_token;
@@ -71,6 +80,7 @@ export const authOptions: NextAuthOptions = {
       return token;
     },
     async session({ session, token, user }: any) {
+      console.log(session);
       session.accessToken = token.accessToken;
       session.user = token.user;
       return session;

@@ -54,7 +54,17 @@ const handler = NextAuth({
     updateAge: 86400, // 1 day
   },
   callbacks: {
+    async signIn({ user, account, profile, email, credentials }) {
+      console.log({ user, account, profile, email, credentials });
+      return true
+    },
+    async redirect(params) {
+      console.log({ params });
+      return params.baseUrl;
+
+    },
     async jwt({ token, account, user }: any) {
+      console.log({token});
       if (account) {
         token.accessToken = account.access_token;
         switch (account.type) {
@@ -70,6 +80,7 @@ const handler = NextAuth({
       return token;
     },
     async session({ session, token, user }: any) {
+      console.log(session);
       session.accessToken = token.accessToken;
       session.user = token.user;
       return session;
